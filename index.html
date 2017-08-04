@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CatBot</title>
+	<style>
+		body {
+	    	background-image: url(../background.gif);
+		}
+		#container {
+			border-radius: 10px;
+			border: 1px solid black;
+			width: 70%;
+			margin-left: 15%;
+			margin-top: 5%;
+			background: white;
+			float:left;
+		}
+		#loader {
+			padding: 20px;
+		}
+		.column {
+			width: 48%;
+			padding: 1%;
+			float: left;
+		}
+		.column img {
+			opacity: .8;
+			width: 95%;
+			margin: 2.5%;
+			transition: all .4s;
+		}
+		.column img:hover {
+			opacity: 1;
+		}
+	</style>
+	<script type="text/javascript">
+		function s(a, b, c, d) {
+			c = a.length;
+			while (c) b = Math.random() * c-- | 0, d = a[c], a[c] = a[b], a[b] = d
+		}
+
+		function wow() {
+			var loader = document.getElementById("loader");
+			loader.innerHTML += "Loading...";
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", '/', true);
+			xhr.responseType = 'json';
+
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+					let links = xhr.response;
+					s(links);
+					for (let i = 0; i < links.length; i++) {
+						document.getElementById('col' + i % 2).innerHTML += `<img src="${links[i]}">`;
+					}
+					loader.parentNode.removeChild(loader);
+				}
+			}
+			xhr.send();
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<center id="loader"><button onclick="wow()">Load!</button><br></center>
+		<div class="column" id="col0"></div><div class="column" id="col1"></div>
+	</div>
+</body>
+</html>

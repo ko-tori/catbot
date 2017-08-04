@@ -1,0 +1,16 @@
+{
+  "name": "catbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "facebook-chat-api": "^1.4.0",
+    "request": "^2.81.0"
+  }
+}
