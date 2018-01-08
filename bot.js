@@ -13,8 +13,8 @@ var getlink = function(callback) {
     };
     var post_data = {
         "grant_type": "password",
-        "username": "___Troll",
-        "password": "091398-908601"
+        "username": "process.env.REDDITUSER",
+        "password": "process.env.REDDITPASS"
     };
     var auth = {
         'user': 'i6jYKN4cMG5XVQ',
